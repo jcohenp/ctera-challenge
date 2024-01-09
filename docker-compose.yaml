@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  web:
+    image: jcohenp/ctera-app:latest
+    container_name: flask-app
+    ports:
+      - "5001:5001"
+    secrets:
+      - db_password
+    environment:
+      CONTAINER_NAME: flask-app
+      DB_USER: ctera
+      DB_HOST: postgres
+      DB_NAME: postgres
+      DB_PORT: 5432
+      DB_PASSWORD_FILE: /run/secrets/db_password
+
+  postgres:
+    image: bitnami/postgresql
+    container_name: postgresql
+    environment:
+      POSTGRESQL_DATABASE: postgres
+      POSTGRESQL_USERNAME: ctera
+      POSTGRESQL_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+
+secrets:
+   db_password:
+     file: db_password.txt
