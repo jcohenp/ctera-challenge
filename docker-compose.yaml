@@ -11,7 +11,7 @@ services:
     environment:
       CONTAINER_NAME: flask-app
       DB_USER: ctera
-      DB_HOST: postgres
+      DB_HOST: postgresql
       DB_NAME: postgres
       DB_PORT: 5432
       DB_PASSWORD_FILE: /run/secrets/db_password
@@ -20,9 +20,10 @@ services:
     image: bitnami/postgresql
     container_name: postgresql
     environment:
-      POSTGRESQL_DATABASE: postgres
       POSTGRESQL_USERNAME: ctera
       POSTGRESQL_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRESQL_DATABASE: postgres
+
     secrets:
       - db_password
 

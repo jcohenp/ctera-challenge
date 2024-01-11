@@ -1,7 +1,6 @@
 from flask import Flask, jsonify
 import os
 import psycopg2
-import docker
 
 app = Flask(__name__)
 
