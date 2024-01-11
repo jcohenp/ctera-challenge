@@ -73,12 +73,17 @@ These secrets are defined in: **https://github.com/jcohenp/ctera-challenge/setti
     ```
     sudo docker push docker.io/jcohenp/ctera-app
     ```
-5. **Run the containarized app**
+5. **Decrypt password secret before running the docker-compose up command**:
+
+    ```
+    gpg --decrypt db_password.txt.gpg > db_password.txt
+    ```
+6. **Run the containarized app**
 
     ```
     docker-compose up
     ```
-6. **To turn off the app**
+7. **To turn off the app**
 
     ```
     docker-compose down
